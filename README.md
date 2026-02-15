@@ -1,10 +1,10 @@
-#SHOPSYSTEMCRAZY
+# SHOPSYSTEMCRAZY
 
 "SHOPSYSTEMCRAZY" es un sistema web desarrollado en **PHP con CodeIgniter 4**, diseñado para la **gestión y venta de productos de cómputo**, permitiendo la administración de información, usuarios y reportes de manera segura y organizada.
 
 ---
 
-##Arquitectura, Framework y Base de Datos
+## Arquitectura, Framework y Base de Datos
 
 * **Arquitectura:** MVC (Model – View – Controller)
 * **Framework:** CodeIgniter 4
@@ -15,7 +15,7 @@ Esta arquitectura permite una separación clara de responsabilidades, facilitand
 
 ---
 
-##Descripción del Proyecto
+## Descripción del Proyecto
 
 SHOPSYSTEMCRAZY es una aplicación web enfocada en la **administración de un sistema de ventas**, donde:
 
@@ -26,7 +26,7 @@ La información se almacena y gestiona de forma segura en una base de datos rela
 
 ---
 
-##Objetivo del Proyecto
+## Objetivo del Proyecto
 
 Desarrollar un sistema web funcional y escalable que aplique:
 
@@ -38,7 +38,7 @@ Desarrollar un sistema web funcional y escalable que aplique:
 
 ---
 
-##Funcionalidades Principales
+## Funcionalidades Principales
 
 * Autenticación de usuarios (Administrador / Cliente)
 * Gestión de productos de cómputo
@@ -50,7 +50,7 @@ Desarrollar un sistema web funcional y escalable que aplique:
 
 ---
 
-##Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 PHP 8.1+
 CodeIgniter 4
@@ -61,7 +61,7 @@ Android Studio
 
 ---
 
-##Estructura del Proyecto
+## Estructura del Proyecto
 
 SHOPSYSTEMCRAZY/
 ├── app/                # Controladores, modelos y vistas (MVC)

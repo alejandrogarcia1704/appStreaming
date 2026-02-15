@@ -19,7 +19,7 @@ $routes->get('acceso/login', 'AccesoController::loginShowForm');
 $routes->post('acceso/login', 'AccesoController::login');
 $routes->get('acceso/logout', 'AccesoController::logout');
 
-
+// ! Routes of API´s
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
 
     $routes->resource('categorias', [

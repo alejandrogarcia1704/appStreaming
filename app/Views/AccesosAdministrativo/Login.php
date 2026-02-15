@@ -33,13 +33,13 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="username"
-                    name="username"
+                    id="usuario"
+                    name="usuario"
                     placeholder="Ingresa el Usuario o correo"
-                    value="<?= old('username') ?>"
+                    value="<?= old('usuario') ?>"
                     required
                   />
-                  <label for="username">Usuario o correo</label>
+                  <label for="usuario">Usuario o correo</label>
                 </div>
               </div>
 
@@ -75,12 +75,6 @@
 
         <div class="card-footer bg-white gap-2 justify-content-center">
           <button type="submit" class="btn btn-secondary w-100 p-sm-2">Iniciar Sesión</button>
-
-          <center class="bg-white">
-            <a class="reference-login" href="<?= site_url('acceso/register-person') ?>">
-              ¿No tienes cuenta? ¡Regístrate ahora!
-            </a>
-          </center>
         </div>
       </form>
     </div>
@@ -89,5 +83,5 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script src="<?= base_url('javascript/login .script.js') ?>"></script>
+<script src="<?= base_url('javascript/login.script.js') ?>"></script>
 <?= $this->endSection() ?>

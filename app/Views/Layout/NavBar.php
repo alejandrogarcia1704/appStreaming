@@ -20,7 +20,7 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
     </picture>
 
     <span class="d-flex flex-column lh-1">
-      <span class="brand-title">TechNova Consulting</span>
+      <span class="brand-title">Shop System Crazy</span>
     </span>
   </a>
 </nav>
@@ -33,7 +33,6 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
   </div>
 
   <div class="offcanvas-body d-flex flex-column">
-    <!-- Perfil del usuario -->
     <div class="d-flex align-items-center gap-2 mb-3 p-2 rounded bg-black bg-opacity-50">
       <i class="bi bi-person-circle fs-3"></i>
       <div>
@@ -41,7 +40,7 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
           <?= esc($isLoggedIn ? ($user['nombre'] ?? 'Invitado') : 'Invitado') ?>
         </div>
         <small class="text-white-50">
-          <?= esc($isLoggedIn ? ($user['email'] ?? 'sin correo') : 'sin correo') ?>
+          <?= esc($isLoggedIn ? ($user['rol'] ?? 'Invitado') : 'Sin rol') ?>
         </small>
       </div>
     </div>
@@ -64,12 +63,8 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
           <a class="nav-link nav-link-list text-white" href="<?= base_url('/brandon') ?>">Brandon</a>
           <a class="nav-link nav-link-list text-white" href="<?= base_url('/enrique') ?>">Enrique</a>
           <a class="nav-link nav-link-list text-white" href="<?= base_url('/julio') ?>">Julio</a>
-          <!--  
-          <a class="nav-link text-white-50" href=" <?= base_url('/') ?>">Reportes</a>  -->
         </div>
       </div>
-
-      <!-- Configuración de Catalogos -->
 
       <div>
         <button
@@ -87,13 +82,13 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
         </div>
       </div>
 
-
       <div>
-        
-      <a class="nav-close nav-link text-white d-flex align-items-center gap-2" href="<?= site_url('acceso/logout') ?>">
-        <img src="<?= base_url('images/icons/exit_to_app.svg') ?>" class="white" alt="cerrar sesión" width="30"
-          height="30"> Cerrar sesión
-      </a>
+
+        <a class="nav-close nav-link text-white d-flex align-items-center gap-2"
+          href="<?= site_url('acceso/logout') ?>">
+          <img src="<?= base_url('images/icons/exit_to_app.svg') ?>" class="white" alt="cerrar sesión" width="30"
+            height="30"> Cerrar sesión
+        </a>
     </nav>
   </div>
 </nav>

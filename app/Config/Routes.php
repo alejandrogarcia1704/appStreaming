@@ -21,7 +21,6 @@ $routes->get('acceso/logout', 'AccesoController::logout');
 
 // ! Routes of API´s
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
-
     $routes->resource('categorias', [
         'controller' => 'Categorias',
         'only'       => ['index', 'show', 'create', 'update', 'delete'],
@@ -42,4 +41,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($
 
     $routes->post('auth/device-login', 'AuthDispositivo::deviceLogin');
 });
+$routes->get('uploads/(:any)', 'Uploads::show/$1');
+
 

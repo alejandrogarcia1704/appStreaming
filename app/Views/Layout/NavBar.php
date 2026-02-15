@@ -5,97 +5,89 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
 
 <?= $this->section('navbar') ?>
 
-<!-- Navbar superior -->
-<nav class="navbar bg-custom px-3 sticky-top">
-  <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-    aria-controls="sidebar">
-    <img src="<?= base_url('images/icons/menu.svg') ?>" class="black-filter" alt="menu" width="20" height="20">
-  </button>
-  <a class="navbar-brand content-logo-business d-flex align-items-center gap-2 text-white fw-semibold text-decoration-none"
-    href="<?= site_url('/') ?>" aria-label="Ir al inicio de AppForrajes">
-    <picture class="brand-logo d-inline-block rounded-2 overflow-hidden">
-      <source srcset="<?= base_url('images/Icono-minimalista-pa.webp') ?>" type="image/webp">
-      <img src="<?= base_url('images/Icono-minimalista-pa.webp') ?>" width="36" height="36" loading="lazy"
-        alt="AppForrajes">
-    </picture>
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-expand-lg navbar-tech sticky-top px-3">
+  <div class="container-fluid">
 
-    <span class="d-flex flex-column lh-1">
-      <span class="brand-title">TechNova Consulting</span>
-    </span>
-  </a>
+    <!-- Marca -->
+    <a class="navbar-brand brand-tech fw-bold" href="<?= base_url('/') ?>">
+      #SHOPSYSTEMCRAZY
+    </a>
+
+    <!-- Botón móvil -->
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#sidebar">
+      <i class="bi bi-list fs-3"></i>
+    </button>
+
+    <!-- Opciones derecha -->
+    <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+
+      <a href="<?= base_url('productos') ?>" class="nav-link text-white">
+        <i class="bi bi-cpu"></i> Componentes
+      </a>
+
+      <a href="<?= base_url('carrito') ?>" class="nav-link text-white position-relative">
+        <i class="bi bi-cart3 fs-5"></i>
+      </a>
+
+      <?php if ($isLoggedIn): ?>
+        <span class="text-white small">
+          <i class="bi bi-person-circle"></i>
+          <?= esc($user['nombre'] ?? 'Usuario') ?>
+        </span>
+        <a href="<?= site_url('acceso/logout') ?>" class="btn btn-sm btn-outline-light">
+          Salir
+        </a>
+      <?php else: ?>
+        <a href="<?= base_url('login') ?>" class="btn btn-sm btn-light">
+          Iniciar sesión
+        </a>
+      <?php endif; ?>
+
+    </div>
+  </div>
 </nav>
 
-<!-- Sidebar lateral -->
-<nav class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+<!-- SIDEBAR -->
+<div class="offcanvas offcanvas-start sidebar-tech text-white"
+     tabindex="-1"
+     id="sidebar">
+
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="sidebarLabel">Menú principal</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    <h5>#SHOPSYSTEMCRAZY</h5>
+    <button type="button" class="btn-close btn-close-white"
+      data-bs-dismiss="offcanvas"></button>
   </div>
 
-  <div class="offcanvas-body d-flex flex-column">
-    <!-- Perfil del usuario -->
-    <div class="d-flex align-items-center gap-2 mb-3 p-2 rounded bg-black bg-opacity-50">
-      <i class="bi bi-person-circle fs-3"></i>
-      <div>
-        <div class="fw-semibold">
-          <?= esc($isLoggedIn ? ($user['nombre'] ?? 'Invitado') : 'Invitado') ?>
-        </div>
-        <small class="text-white-50">
-          <?= esc($isLoggedIn ? ($user['email'] ?? 'sin correo') : 'sin correo') ?>
-        </small>
-      </div>
-    </div>
+  <div class="offcanvas-body">
 
-    <!-- Navegación -->
-    <nav class="nav flex-column gap-1 flex-grow-1">
-      <a class="nav-link nav-link-function text-white d-flex align-items-center gap-2 active"
-        href="<?= base_url('/') ?>">
-        <img src="<?= base_url('images/icons/home.svg') ?>" class="white" alt="inicio" width="30" height="30"> Inicio
+    <nav class="nav flex-column gap-2">
+
+      <a class="nav-link text-white" href="<?= base_url('/') ?>">
+        <i class="bi bi-house"></i> Inicio
       </a>
-      <div>
-        <button
-          class="btn btn-toggle nav-link-function align-items-center rounded text-start w-100 text-white d-flex gap-2"
-          data-bs-toggle="collapse" data-bs-target="#submenu1" aria-expanded="false">
-          <img src="<?= base_url('images/icons/supervised_user.svg') ?>" class="white" alt="inicio" width="30"
-            height="30"> Portafolios
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </button>
-        <div class="collapse ps-4 mt-1" id="submenu1">
-          <a class="nav-link nav-link-list text-white" href="<?= base_url('/brandon') ?>">Brandon</a>
-          <a class="nav-link nav-link-list text-white" href="<?= base_url('/enrique') ?>">Enrique</a>
-          <a class="nav-link nav-link-list text-white" href="<?= base_url('/julio') ?>">Julio</a>
-          <!--  
-          <a class="nav-link text-white-50" href=" <?= base_url('/') ?>">Reportes</a>  -->
-        </div>
-      </div>
 
-      <!-- Configuración de Catalogos -->
-
-      <div>
-        <button
-          class="btn btn-toggle nav-link-function align-items-center rounded text-start w-100 text-white d-flex gap-2"
-          data-bs-toggle="collapse" data-bs-target="#Catalogos" aria-expanded="false">
-          <img src="<?= base_url('images/icons/category.svg') ?>" class="white" alt="inicio" width="30" height="30">
-          Contactanos
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </button>
-
-        <div class="collapse ps-4 mt-1" id="Catalogos">
-          <a class="nav-link nav-link-list text-white" href="<?= base_url('contacto') ?>">
-            Registro de solicitud
-          </a>
-        </div>
-      </div>
-
-
-      <div>
-        
-      <a class="nav-close nav-link text-white d-flex align-items-center gap-2" href="<?= site_url('acceso/logout') ?>">
-        <img src="<?= base_url('images/icons/exit_to_app.svg') ?>" class="white" alt="cerrar sesión" width="30"
-          height="30"> Cerrar sesión
+      <a class="nav-link text-white" href="<?= base_url('productos') ?>">
+        <i class="bi bi-motherboard"></i> Componentes
       </a>
+
+      <a class="nav-link text-white" href="<?= base_url('categorias') ?>">
+        <i class="bi bi-grid"></i> Categorías
+      </a>
+
+      <a class="nav-link text-white" href="<?= base_url('ofertas') ?>">
+        <i class="bi bi-lightning-charge"></i> Ofertas
+      </a>
+
+      <hr class="text-white-50">
+
+      <a class="nav-link text-white-50" href="<?= base_url('contacto') ?>">
+        <i class="bi bi-envelope"></i> Contacto
+      </a>
+
     </nav>
   </div>
-</nav>
+</div>
 
 <?= $this->endSection() ?>

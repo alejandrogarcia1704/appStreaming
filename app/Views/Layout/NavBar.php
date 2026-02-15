@@ -25,11 +25,15 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
   </a>
 </nav>
 
-<!-- Sidebar lateral -->
-<nav class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+<!-- SIDEBAR -->
+<div class="offcanvas offcanvas-start sidebar-tech text-white"
+     tabindex="-1"
+     id="sidebar">
+
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="sidebarLabel">Menú principal</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    <h5>#SHOPSYSTEMCRAZY</h5>
+    <button type="button" class="btn-close btn-close-white"
+      data-bs-dismiss="offcanvas"></button>
   </div>
 
   <div class="offcanvas-body d-flex flex-column">
@@ -91,6 +95,6 @@ $isLoggedIn = (bool) (session()->get('isLoggedIn') ?? false);
         </a>
     </nav>
   </div>
-</nav>
+</div>
 
 <?= $this->endSection() ?>

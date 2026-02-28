@@ -74,3 +74,4 @@ SHOPSYSTEMCRAZY/
 ├── .env                # Configuración del entorno y base de datos
 ├── composer.json       # Dependencias del proyecto
 └── README.md           # Documentación del proyecto
+"# conversation" 

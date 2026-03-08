@@ -2,13 +2,13 @@
 <html>
 <head>
 
-<title>Registro</title>
+<title>Recuperar contraseña</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:#34495e;
+background:#16a085;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -34,7 +34,7 @@ border-radius:5px;
 button{
 width:100%;
 padding:10px;
-background:#27ae60;
+background:#e67e22;
 color:white;
 border:none;
 border-radius:5px;
@@ -42,7 +42,7 @@ cursor:pointer;
 }
 
 button:hover{
-background:#1e8449;
+background:#ca6f1e;
 }
 
 </style>
@@ -53,17 +53,13 @@ background:#1e8449;
 
 <div class="container">
 
-<h2>Registro</h2>
+<h2>Recuperar contraseña</h2>
 
-<form method="post" action="/register">
-
-<input name="name" placeholder="Nombre" required>
+<form method="post" action="/forgot">
 
 <input type="email" name="email" placeholder="Correo" required>
 
-<input type="password" name="password" placeholder="Contraseña" required>
-
-<button>Registrarse</button>
+<button>Enviar</button>
 
 </form>
 

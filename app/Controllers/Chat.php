@@ -1,12 +1,15 @@
+<?php
+
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Models\MessageModel;
 
 class Chat extends BaseController
 {
 
-private $key="CLAVESECRETA";
+private $key="CLAVE_SECRETA_CHAT";
 
 private function encrypt($text)
 {
@@ -31,9 +34,16 @@ return openssl_decrypt($encrypted,'AES-256-CBC',$this->key,0,$iv);
 public function index()
 {
 
+if(!session()->get('user_id'))
+{
+return redirect()->to('/');
+}
+
 $userModel=new UserModel();
 
-$data['users']=$userModel->findAll();
+$data['users']=$userModel
+->where('id !=',session()->get('user_id'))
+->findAll();
 
 return view('chat/index',$data);
 
@@ -47,27 +57,48 @@ $data['receiver']=$id;
 return view('chat/conversation',$data);
 
 }
-
 public function sendMessage()
 {
 
-$model=new MessageModel();
+$model = new \App\Models\MessageModel();
 
-$message=$this->encrypt($this->request->getPost('message'));
+$message = $this->request->getPost('message');
 
-$data=[
+$type = 'text';
+$fileName = null;
+
+$file = $this->request->getFile('file');
+
+if($file && $file->isValid() && !$file->hasMoved()){
+
+$fileName = $file->getRandomName();
+
+$file->move(FCPATH.'uploads', $fileName);
+
+$ext = strtolower($file->getExtension());
+
+if(in_array($ext,['jpg','jpeg','png','gif']))
+$type='image';
+
+elseif(in_array($ext,['mp4','webm']))
+$type='video';
+
+else
+$type='file';
+
+}
+
+$model->insert([
 
 'sender_id'=>session()->get('user_id'),
-
 'receiver_id'=>$this->request->getPost('receiver'),
-
 'message'=>$message,
+'file'=>$fileName,
+'type'=>$type
 
-'type'=>'text'
+]);
 
-];
-
-$model->save($data);
+return $this->response->setJSON(['status'=>'ok']);
 
 }
 
@@ -76,20 +107,16 @@ public function getMessages($receiver)
 
 $model=new MessageModel();
 
-$sender=session()->get('user_id');
+$my_id=session()->get('user_id');
 
-$messages=$model
-->where("(sender_id=$sender AND receiver_id=$receiver) OR (sender_id=$receiver AND receiver_id=$sender)")
+$data=$model
+
+->where("(sender_id=$my_id AND receiver_id=$receiver)")
+->orWhere("(sender_id=$receiver AND receiver_id=$my_id)")
+->orderBy('id','ASC')
 ->findAll();
 
-foreach($messages as &$m)
-{
-
-$m['message']=$this->decrypt($m['message']);
-
-}
-
-return $this->response->setJSON($messages);
+return $this->response->setJSON($data);
 
 }
 

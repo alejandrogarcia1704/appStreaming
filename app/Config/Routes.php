@@ -26,14 +26,14 @@ $routes->setDefaultController('Auth');
 $routes->setDefaultMethod('loginView');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
 ---------------------------------------------------------------
 Route Definitions
 ---------------------------------------------------------------
 */
-
+$routes->get('/logout', 'Auth::logout');
 $routes->get('/', 'Auth::loginView');
 
 $routes->post('/login', 'Auth::login');

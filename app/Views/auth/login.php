@@ -1,37 +1,15 @@
-<?= $this->extend('layouts/main') ?>
+<h2>Login</h2>
 
-<?= $this->section('content') ?>
+<form method="post" action="/login">
 
-<div class="row justify-content-center align-items-center vh-100">
-  <div class="col-md-4">
-    <div class="card shadow-lg border-0">
-      <div class="card-body p-4">
+<input type="email" name="email" placeholder="Email">
 
-        <h3 class="text-center mb-4 fw-bold">
-          #SHOPSYSTEMCRAZY
-        </h3>
+<input type="password" name="password" placeholder="Password">
 
-        <form method="post" action="<?= site_url('acceso/login') ?>">
+<button type="submit">Login</button>
 
-          <div class="mb-3">
-            <label class="form-label">Usuario</label>
-            <input type="text" name="usuario" class="form-control" required>
-          </div>
+</form>
 
-          <div class="mb-3">
-            <label class="form-label">Contraseña</label>
-            <input type="password" name="password" class="form-control" required>
-          </div>
+<a href="/register">Registrarse</a>
 
-          <button class="btn btn-primary w-100">
-            Iniciar sesión
-          </button>
-
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<?= $this->endSection() ?>
+<a href="/forgot">Olvide mi contraseña</a>
